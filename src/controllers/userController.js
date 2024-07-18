@@ -5,6 +5,7 @@ const findUsers = async () => {
     try {
       const users = await User.find();
       // console.log('Users :-------------- >>>>  ', users);
+      
     } catch (error) {
       console.error('Error finding users:', error);
     }
