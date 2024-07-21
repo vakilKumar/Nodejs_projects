@@ -7,7 +7,6 @@ const loginRouters = require('./routes/loginRoutes');
 
 const app = express();
 
-// Connect to the database
 connectDB();
 
 // Middleware
