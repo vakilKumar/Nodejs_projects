@@ -13,7 +13,11 @@ const cors = require('cors');
 const loginUser = async (req, res) => {
   // res.send('User logged in');
   try {
-    const users = await User.find({ email: req.body.email });
+
+    console.log('----- req ------', req.query)
+    console.log('----- params ------', req.body)
+    const users = await User.find({ username: req.body.username });
+
 
     if (users.length === 0) {
       return res.status(401).json({ message: 'Invalid username or password' });
@@ -38,7 +42,8 @@ const loginUser = async (req, res) => {
       const token = jwt.sign({ id: user.id, username: user.username }, 'your_secret_key', { expiresIn: '1h' });
 
       console.log('Login successful');
-      res.json({ token });
+      // res.json({ token });
+      res.status(201).json({ token: token, message: 'Login successfully', user: user });
     });
   } catch (error) {
     console.error('Error finding user:', error);

@@ -5,12 +5,14 @@ const connectDB = require('./config/db');
 const loginRouters = require('./routes/loginRoutes');
 const signupRouters = require('./routes/signupRouter');
 const { signup } = require('./components/signup');
+const cors = require('cors');
 
 const app = express();
 
 connectDB();
 
 // Middleware
+app.use(cors());
 app.use(bodyParser.json());
 
 // Routes

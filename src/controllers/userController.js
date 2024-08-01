@@ -39,8 +39,9 @@ exports.getUserById = async (req, res) => {
 // Create a new user
 exports.createUser = async (req, res) => {
   try {
-    const { name, email, password } = req.body;
-    const newUser = new User({ name, email, password });
+    const { username, email, password, role } = req.body;
+    console.log('------- req.body ------', req.body)
+    const newUser = new User({ username, email, password, role });
     await newUser.save();
     res.status(201).json(newUser);
   } catch (error) {
