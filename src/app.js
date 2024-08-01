@@ -3,7 +3,8 @@ const bodyParser = require('body-parser');
 const userRoutes = require('./routes/userRoutes');
 const connectDB = require('./config/db');
 const loginRouters = require('./routes/loginRoutes');
-// const signupRouters = require('./components/signup');
+const signupRouters = require('./routes/signupRouter');
+const { signup } = require('./components/signup');
 
 const app = express();
 
@@ -15,6 +16,6 @@ app.use(bodyParser.json());
 // Routes
 app.use('/api/users', userRoutes);
 app.use('/api/login', loginRouters); 
-// app.use('/api', signupRouters); 
+app.use('/api/signup', signupRouters); 
 
 module.exports = app;
